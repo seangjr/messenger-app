@@ -22,9 +22,13 @@ const Avatar: React.FC<AvatarProps> = ({ user }) => {
           md:w-11
         "
       >
-        <Image alt="Avatar" src={user?.image || "/images/placeholder.jpg"} fill />
+        <Image
+          alt="Avatar"
+          src={user?.image || "/images/placeholder.jpg"}
+          fill
+        />
       </div>
-      <span 
+      <span
         className="
           absolute
           block
