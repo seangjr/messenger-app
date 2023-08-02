@@ -1,15 +1,15 @@
-"use client"
+"use client";
 
 import useConversation from "@/app/hooks/useConversation";
-import useRoutes from "@/app/hooks/useRoutes"
+import useRoutes from "@/app/hooks/useRoutes";
 
 import MobileItem from "./MobileItem";
 
 const MobileFooter = () => {
   const routes = useRoutes();
-  const { isOpen } = useConversation()
+  const { isOpen } = useConversation();
 
-  if (isOpen) return null
+  if (isOpen) return null;
 
   return (
     <div
@@ -26,8 +26,8 @@ const MobileFooter = () => {
         lg:hidden
       "
     >
-      {routes.map(route => (
-        <MobileItem 
+      {routes.map((route) => (
+        <MobileItem
           key={route.href}
           href={route.href}
           active={route.active}
@@ -36,7 +36,7 @@ const MobileFooter = () => {
         />
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default MobileFooter
+export default MobileFooter;

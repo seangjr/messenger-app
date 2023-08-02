@@ -1,7 +1,7 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import clsx from "clsx"
+import Link from "next/link";
+import clsx from "clsx";
 
 interface MobileItemProps {
   href: string;
@@ -14,19 +14,20 @@ const MobileItem: React.FC<MobileItemProps> = ({
   href,
   icon: Icon,
   active,
-  onClick
+  onClick,
 }) => {
   const handleClick = () => {
     if (onClick) {
-      return onClick()
+      return onClick();
     }
-  }
+  };
 
   return (
-    <Link 
+    <Link
       onClick={handleClick}
       href={href}
-      className={clsx(`
+      className={clsx(
+        `
         group
         flex
         gap-x-3
@@ -45,7 +46,7 @@ const MobileItem: React.FC<MobileItemProps> = ({
     >
       <Icon className="h-6 w-6" />
     </Link>
-  )
-}
+  );
+};
 
-export default MobileItem
+export default MobileItem;
