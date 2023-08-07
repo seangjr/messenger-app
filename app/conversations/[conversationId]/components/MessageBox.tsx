@@ -12,9 +12,10 @@ import ImageModal from "./ImageModal";
 interface MessageBoxProps {
   data: FullMessageType;
   isLast?: boolean;
+  isFirst?: boolean;
 }
 
-const MessageBox: React.FC<MessageBoxProps> = ({ data, isLast }) => {
+const MessageBox: React.FC<MessageBoxProps> = ({ data, isLast, isFirst }) => {
   const session = useSession();
   const [imageModalOpen, setImageModalOpen] = useState(false);
   const isOwn = session?.data?.user?.email === data?.sender?.email;
@@ -24,9 +25,14 @@ const MessageBox: React.FC<MessageBoxProps> = ({ data, isLast }) => {
     .join(", ");
   // Sean, John, Mark
 
-  const container = clsx("flex gap-3 p-4", isOwn && "justify-end");
+  const container = clsx(
+    "flex gap-3 px-4",
+    isOwn && "justify-end",
+    isFirst && "mt-4",
+    !isFirst && "mt-[1px] px-[4.5rem]"
+  );
   const avatar = clsx(isOwn && "order-2");
-  const body = clsx("flex flex-col gap-2", isOwn && "items-end");
+  const body = clsx("flex flex-col", isOwn && "items-end");
   const message = clsx(
     "text-sm w-fit overflow-hidden",
     isOwn ? "bg-sky-500 text-white" : "bg-gray-100",
@@ -35,15 +41,21 @@ const MessageBox: React.FC<MessageBoxProps> = ({ data, isLast }) => {
 
   return (
     <div className={container}>
-      <div className={avatar}>
-        <Avatar user={data.sender} />
-      </div>
+      {isFirst && (
+        <div className={avatar}>
+          <Avatar user={data.sender} />
+        </div>
+      )}
       <div className={body}>
-        <div className="flex items-center gap-1">
-          <div className="text-sm text-gray-500">{data.sender.name}</div>
-          <div className="text-xs text-gray-400">
-            {format(new Date(data.createdAt), "p")}
-          </div>
+        <div className="flex items-center gap-1 px">
+          {isFirst && (
+            <>
+              <div className="text-sm text-gray-500">{data.sender.name}</div>
+              <div className="text-xs text-gray-400">
+                {format(new Date(data.createdAt), "p")}
+              </div>
+            </>
+          )}
         </div>
         <div className={message}>
           <ImageModal

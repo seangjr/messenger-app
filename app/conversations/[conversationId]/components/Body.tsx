@@ -63,6 +63,11 @@ const Body: React.FC<BodyProps> = ({ initialMessages }) => {
       {messages.map((message, i) => (
         <MessageBox
           isLast={i === messages.length - 1}
+          // first message from user
+          isFirst={
+            i === 0 || // first message
+            messages[i - 1]?.senderId !== message.senderId // first message from user
+          }
           key={message.id}
           data={message}
         />

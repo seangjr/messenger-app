@@ -14,7 +14,17 @@ export async function POST(request: Request) {
     }
 
     if (isGroup && (!members || members.length < 2 || !name)) {
-      return new NextResponse("Invalid data", { status: 400 });
+      if (!members || members.length < 2) {
+        return new NextResponse("Please add more than 1 member!", {
+          status: 400,
+        });
+      }
+
+      if (!name) {
+        return new NextResponse("Please add a name!", { status: 400 });
+      }
+
+      return new NextResponse("Bad Request", { status: 400 });
     }
 
     if (isGroup) {
