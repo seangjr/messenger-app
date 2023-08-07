@@ -9,7 +9,29 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Messenger",
-  description: "Message your friends and family with Messenger!.",
+  description: "Message your friends and family with Messenger!",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://messenger.seangjr.tech",
+    title: "Messenger",
+    description: "Message your friends and family with Messenger!",
+    images: [
+      {
+        url: "/images/maxresdefault.jpg",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Messenger",
+    description: "Message your friends and family with Messenger!",
+    images: [
+      {
+        url: "/images/maxresdefault.jpg",
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
