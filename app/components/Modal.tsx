@@ -63,13 +63,13 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
                   bg-white
                   px-4
                   pb-4
+                  sm:p-6
                   text-left
                   shadow-xl
                   transition-all
                   sm:my-8
                   sm:w-full
                   sm:max-w-lg
-                  sm:p-6
                 "
               >
                 <div

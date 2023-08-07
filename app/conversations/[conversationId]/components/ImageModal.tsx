@@ -14,20 +14,15 @@ const ImageModal: React.FC<ImageModalProps> = ({ isOpen, onClose, src }) => {
 
   return (
     <Modal isOpen={isOpen} onClose={onClose}>
-      <div
-        // fit the image to the modal and maintain original aspect ratio
-        className="
-          w-full
-          h-full
-          max-w-[90vw]
-          max-h-[90vh]
-        "
-      >
+      <div>
         <Image
           alt="message image"
-          fill
-          objectFit="cover"
-          objectPosition="center"
+          width={500}
+          height={500}
+          className="
+            object-cover
+            cursor-pointer
+          "
           src={src}
         />
       </div>
