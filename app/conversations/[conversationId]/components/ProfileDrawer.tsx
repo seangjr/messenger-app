@@ -8,6 +8,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { IoClose, IoTrash } from "react-icons/io5";
 import Avatar from "@/app/components/Avatar";
 import ConfirmModal from "./ConfirmModal";
+import AvatarGroup from "@/app/components/AvatarGroup";
 
 interface ProfileDrawerProps {
   isOpen: boolean;
@@ -169,7 +170,11 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                       "
                         >
                           <div className="mb-2">
-                            <Avatar user={otherUser} />
+                            {data.isGroup ? (
+                              <AvatarGroup users={data.users} />
+                            ) : (
+                              <Avatar user={otherUser} />
+                            )}
                           </div>
                           <div>{title}</div>
                           <div
@@ -233,6 +238,68 @@ const ProfileDrawer: React.FC<ProfileDrawerProps> = ({
                               sm:px-6
                             "
                             >
+                              {data.isGroup && (
+                                <div>
+                                  <dt
+                                    className="
+                                    text-sm
+                                    font-medium
+                                    text-gray-500
+                                    sm:w-40
+                                    sm:flex-shrink-0
+                                  "
+                                  >
+                                    Emails
+                                  </dt>
+                                  <dd
+                                    className="
+                                    mt-1
+                                    text-sm
+                                    text-gray-900
+                                    sm:col-span-2
+                                  "
+                                  >
+                                    {data.users.map((user) => (
+                                      <div key={user.id}>{user.email}</div>
+                                    ))}
+                                  </dd>
+                                </div>
+                              )}
+                              {data.isGroup && (
+                                <>
+                                  <hr />
+                                  <div>
+                                    <dt
+                                      className="
+                                      text-sm
+                                      font-medium
+                                      text-gray-500
+                                      sm:w-40
+                                      sm:flex-shrink-0
+                                    "
+                                    >
+                                      Group Created
+                                    </dt>
+                                    <dd
+                                      className="
+                                      mt-1
+                                      text-sm
+                                      text-gray-900
+                                      sm:col-span-2
+                                    "
+                                    >
+                                      <time
+                                        dateTime={format(
+                                          new Date(data.createdAt),
+                                          "PP"
+                                        )}
+                                      >
+                                        {format(new Date(data.createdAt), "PP")}
+                                      </time>
+                                    </dd>
+                                  </div>
+                                </>
+                              )}
                               {!data.isGroup && (
                                 <div>
                                   <dt
