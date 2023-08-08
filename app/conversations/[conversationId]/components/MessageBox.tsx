@@ -29,7 +29,7 @@ const MessageBox: React.FC<MessageBoxProps> = ({ data, isLast, isFirst }) => {
     "flex gap-3 px-4",
     isOwn && "justify-end",
     isFirst && "mt-4",
-    !isFirst && "mt-[1px] px-[4.5rem]"
+    !isFirst && "mt-[1px] sm:px-[4.5rem] px-[4rem]"
   );
   const avatar = clsx(isOwn && "order-2");
   const body = clsx("flex flex-col", isOwn && "items-end");

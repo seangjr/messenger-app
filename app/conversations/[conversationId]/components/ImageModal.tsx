@@ -17,8 +17,8 @@ const ImageModal: React.FC<ImageModalProps> = ({ isOpen, onClose, src }) => {
       <div>
         <Image
           alt="message image"
-          width={500}
-          height={500}
+          width={1000}
+          height={1000}
           className="
             object-cover
             cursor-pointer

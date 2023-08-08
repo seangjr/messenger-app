@@ -61,8 +61,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, children }) => {
                   overflow-hidden
                   rounded-lg
                   bg-white
-                  px-4
-                  pb-4
+                  p-2
                   sm:p-6
                   text-left
                   shadow-xl

@@ -1,7 +1,25 @@
+"use client";
+
 import Image from "next/image";
 import AuthForm from "./components/AuthForm";
+import { useSearchParams, useRouter } from "next/navigation";
+import { useEffect } from "react";
+import toast from "react-hot-toast";
 
 export default function Home() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const error = searchParams?.get("error");
+
+  useEffect(() => {
+    if (error) {
+      toast.error(
+        "You must link your account before you can sign in with a social account."
+      );
+      router.replace("/");
+    }
+  }, [error, router, searchParams]);
+
   return (
     <div
       className="
